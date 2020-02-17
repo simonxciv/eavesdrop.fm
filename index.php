@@ -7,7 +7,7 @@
     // Your Plex Server's unique identifier. Go to your server's General Settings page to see this in the URL.
     $server_uuid = '';
 
-    // Optional ListenBrainz user token from https://listenbrainz.org/profile/ to attribute listens to your profile
+    // ListenBrainz user token from https://listenbrainz.org/profile/ to attribute listens to your profile
     $lb_token = '';
 
     /* -------------------------------------------------------------------
