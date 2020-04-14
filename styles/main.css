@@ -1,0 +1,110 @@
+:root {
+    --accent-dark: #CC7B19;
+
+    --base-dark: #1F2326;
+    --alt-light: #FAFAFA;
+
+    --foreground-primary: var(--base-dark);
+    --background-primary: var(--alt-light);
+}
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+    background: var(--background-primary);
+    color: var(--foreground-primary);
+    font-size: 18px;
+    line-height: 1.8;
+}
+main,
+header,
+footer {
+    max-width: 800px;
+    margin: 0 auto;
+}
+header {
+    border-bottom: 1px solid var(--foreground-primary);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    margin-bottom: 50px;
+}
+header h1,
+header p {
+    display: block;
+    margin: 0;
+}
+header p {
+    text-align: right;
+}
+h2 {
+    margin-bottom: 0;
+    margin-top: 50px;
+}
+a {
+    color: var(--accent-dark);
+}
+p {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+ol {
+    margin-top: 0;
+    padding-left: 20px;
+}
+ol li {
+    margin-bottom: 10px;
+    padding-left: 20px;
+}
+ol li img {
+    margin: 15px 0 15px -10px;
+    max-width: 100%;
+    box-shadow: 0 0 60px 0 rgba(0,0,0,.1);
+}
+input {
+    background: var(--background-primary);
+    border: 1px solid var(--foreground-primary);
+    color: var(--foreground-primary);
+    padding: 8px;
+    display: block;
+    margin-top: 8px;
+    width: 60%;
+    font-size: 18px;
+}
+.url {
+    font-weight: bold;
+}
+footer {
+    border-top: 1px solid var(--foreground-primary);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    padding-top: 20px;
+    margin-top: 50px;
+}
+footer .github {
+    text-align: right;
+    font-size: 24px;
+}
+footer .github a {
+    color: var(--foreground-primary);
+}
+footer .github a:hover,
+footer .github a:focus,
+footer .github a:active {
+    color: var(--accent-dark);
+}
+.fa-heart {
+    color: red;
+}
+@media screen and (max-width: 420px) {
+    header,
+    footer {
+        display: block;
+        text-align: center;
+    }
+    header p,
+    footer .github {
+        text-align: center;
+    }
+}

@@ -1,0 +1,4 @@
+:root {
+    --foreground-primary: var(--alt-light);
+    --background-primary: var(--base-dark);
+}
