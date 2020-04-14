@@ -127,7 +127,7 @@
 <html>
     <head>
 
-        <title>Plex2LB</title>
+        <title>Plex2LB - Sync your Plex listens with ListenBrainz</title>
         <link href="styles/main.css" rel="stylesheet">
         <link href="styles/dark.css" rel="stylesheet" media="(prefers-color-scheme:dark)">
 
@@ -135,6 +135,15 @@
 
         <meta name="description" content="Convert Plex track plays to ListenBrainz listens via webhooks and the ListenBrainz API. Like scrobbling, but not really.">
         <meta name="viewport" content="width=device-width,initial-scale=1">
+        
+        <meta property="og:title" content="Sync your Plex listens with ListenBrainz">
+        <meta property="og:description" content="Convert Plex track plays to ListenBrainz listens via webhooks and the ListenBrainz API. Like scrobbling, but not really.">
+        <meta property="og:url" content="https://plex2lb.com">
+
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
 
     </head>
     <body>
