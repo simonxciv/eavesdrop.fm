@@ -97,11 +97,14 @@ footer .github a:active {
 .fa-heart {
     color: red;
 }
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 500px) {
     header,
     footer {
         display: block;
         text-align: center;
+    }
+    header p {
+        margin-bottom: 10px;
     }
     header p,
     footer .github {

@@ -127,7 +127,7 @@
 <html>
     <head>
 
-        <title>Plex2LB - Sync your Plex listens with ListenBrainz</title>
+        <title>Eavesdrop.FM - Sync your Plex listens with ListenBrainz</title>
         <link href="styles/main.css" rel="stylesheet">
         <link href="styles/dark.css" rel="stylesheet" media="(prefers-color-scheme:dark)">
 
@@ -138,7 +138,7 @@
         
         <meta property="og:title" content="Sync your Plex listens with ListenBrainz">
         <meta property="og:description" content="Convert Plex track plays to ListenBrainz listens via webhooks and the ListenBrainz API. Like scrobbling, but not really.">
-        <meta property="og:url" content="https://plex2lb.com">
+        <meta property="og:url" content="https://eavesdrop.fm">
 
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -148,11 +148,11 @@
     </head>
     <body>
         <header>
-            <h1>Plex2LB</h1>
+            <h1>Eavesdrop.FM</h1>
             <p>ListenBrainz + Plex = <i class="fas fa-heart"></i></p>
         </header>
         <main>
-            <p><em>Plex2LB</em> connects your <a href="https://plex.tv">Plex</a> music library to <a href="https://listenbrainz.org">the ListenBrainz project</a> for you; automagically taking Plex Webhooks and transmogrifying them into ListenBrainz... listens? It's like scrobbling, but without using someone else's trademark!</p>
+            <p><em>Eavesdrop.FM</em> connects your <a href="https://plex.tv">Plex</a> music library to <a href="https://listenbrainz.org">the ListenBrainz project</a> for you; automagically taking Plex Webhooks and transmogrifying them into ListenBrainz... listens? It's like scrobbling, but without using someone else's trademark!</p>
 
             <h2>Requirements</h2>
             <p>To use this service, you'll need a Plex Media Server with a <a href="https://www.plex.tv/en-au/your-media/music/">Music library</a> set up. Additionally, as webhooks are a premium Plex feature, you'll need a <a href="https://www.plex.tv/en-au/plex-pass/">Plex Pass</a>.</p>
@@ -180,7 +180,7 @@
                 <i class="fad fa-hammer"></i> Built by <a href="https://smnbkly.co">Simon Buckley</a> 
             </div>
             <div class="github">
-                <a title="Plex2LB on Github" href="https://github.com/simonxciv/listenbrainz-plex"><i class="fab fa-github"></i></a>
+                <a title="Eavesdrop.FM on Github" href="https://github.com/simonxciv/listenbrainz-plex"><i class="fab fa-github"></i></a>
             </div>
         </footer>
         <script>
@@ -188,7 +188,7 @@
                 output = document.getElementById("lboutput");
 
             input.addEventListener("input", function() {
-                var clean = DOMPurify.sanitize('https://plex2lb.com/?id=' + input.value);
+                var clean = DOMPurify.sanitize('https://eavesdrop.fm/?id=' + input.value);
                 output.innerHTML = clean;
             });
         </script>
