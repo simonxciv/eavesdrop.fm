@@ -43,14 +43,14 @@
         $frontend = true;
     } else {
         // Implode the request to a string, decode the json
-        $plex_data = json_decode($_REQUEST["payload"]); // json_decode(implode('', $_REQUEST));
+        $plex_data = json_decode($_REQUEST["payload"]);
 
         // Ignore the request if the ListenBrainz ID isn't valid
         if(!isset($_REQUEST["id"]) || validateID($_REQUEST["id"], $lb_api_root_url) != true) {
             $frontend = true;
             die();
         } else {
-            $lbid = $_REQUEST["id"];
+            $lbid = rawurldecode($_REQUEST["id"]);
         }
 
         // Ignore the event if it's not the right type of media
@@ -60,7 +60,7 @@
         }
 
         // Check whether request includes a filter for users. If the user doesn't match the filter, ignore the request
-        if(isset($_REQUEST['user']) && strtolower($_REQUEST['user']) !== strtolower($plex_data->Account->title)) {
+        if(isset($_REQUEST['user']) && strtolower(rawurldecode($_REQUEST['user'])) !== strtolower($plex_data->Account->title)) {
             $frontend = true;
             die();
         }
@@ -200,12 +200,12 @@
             var url = 'https://eavesdrop.fm/?id=';
 
             lbid.addEventListener("input", function() {
-                url = 'https://eavesdrop.fm/?id=' + lbid.value;
+                url = 'https://eavesdrop.fm/?id=' + encodeURIComponent(lbid.value);
                 output.innerHTML = DOMPurify.sanitize(url);
             });
             username.addEventListener("input", function() {
                 if(lbid.value != '') {
-                    url = 'https://eavesdrop.fm/?id=' + lbid.value + '&user=' + username.value
+                    url = 'https://eavesdrop.fm/?id=' + encodeURIComponent(lbid.value) + '&user=' + encodeURIComponent(username.value)
                     output.innerHTML = DOMPurify.sanitize(url);
                 }
             });
