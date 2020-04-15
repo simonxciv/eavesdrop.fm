@@ -86,7 +86,7 @@
                 'listen_type' => $listen_type,
                 'payload' => array(array(
                     'track_metadata' => array(
-                        'artist_name' => $plex_data->Metadata->grandparentTitle,
+                        'artist_name' => ($plex_data->Metadata->originalTitle ? $plex_data->Metadata->originalTitle : $plex_data->Metadata->grandparentTitle),
                         'track_name' => $plex_data->Metadata->title,
                         'release_name' => $plex_data->Metadata->parentTitle
                     )
@@ -101,7 +101,7 @@
                 'payload' => array(array(
                     'listened_at' => $timeStamp,
                     'track_metadata' => array(
-                        'artist_name' => $plex_data->Metadata->grandparentTitle,
+                        'artist_name' => ($plex_data->Metadata->originalTitle ? $plex_data->Metadata->originalTitle : $plex_data->Metadata->grandparentTitle),
                         'track_name' => $plex_data->Metadata->title,
                         'release_name' => $plex_data->Metadata->parentTitle
                     )
@@ -171,6 +171,9 @@
                 <li>Paste your ListenBrainz ID in the field below (don't worry, we won't store it):<br>
                     <input id="lbid" type="text" placeholder="e.g. 152be636-bc70-4c86-9d0d-ba5bfb79fb65">
                 </li>
+                <li>Enter your Plex username below to ensure shared user listens aren't submitted on your behalf:<br>
+                    <input id="username" type="text" placeholder="e.g. elan">
+                </li>
                 <li>Copy this URL: <span id="lboutput" class="url"></span></li>
                 <li>And finally, paste the copied URL into a new <a href="https://app.plex.tv/desktop#!/settings/webhooks">webhook here</a> using the "Add Webhook" button.</p>
             </ol>
@@ -183,19 +186,28 @@
         </main>
         <footer>
             <div>
-                <i class="fad fa-hammer"></i> Built by <a href="https://smnbkly.co">Simon Buckley</a> 
+                <i class="fad fa-hammer"></i> Built by <a href="https://smnbkly.co">Simon Buckley</a>
             </div>
             <div class="github">
                 <a title="Eavesdrop.FM on Github" href="https://github.com/simonxciv/listenbrainz-plex"><i class="fab fa-github"></i></a>
             </div>
         </footer>
         <script>
-            var input = document.getElementById("lbid"),
+            var lbid = document.getElementById("lbid"),
+                username = document.getElementById("username"),
                 output = document.getElementById("lboutput");
 
-            input.addEventListener("input", function() {
-                var clean = DOMPurify.sanitize('https://eavesdrop.fm/?id=' + input.value);
-                output.innerHTML = clean;
+            var url = 'https://eavesdrop.fm/?id=';
+
+            lbid.addEventListener("input", function() {
+                url = 'https://eavesdrop.fm/?id=' + lbid.value;
+                output.innerHTML = DOMPurify.sanitize(url);
+            });
+            username.addEventListener("input", function() {
+                if(lbid.value != '') {
+                    url = 'https://eavesdrop.fm/?id=' + lbid.value + '&user=' + username.value
+                    output.innerHTML = DOMPurify.sanitize(url);
+                }
             });
         </script>
         <script src="https://kit.fontawesome.com/9773f88366.js" crossorigin="anonymous"></script>
