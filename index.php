@@ -59,6 +59,12 @@
             die();
         }
 
+        // Check whether request includes a filter for users. If the user doesn't match the filter, ignore the request
+        if(isset($_REQUEST['user']) && strtolower($_REQUEST['user']) !== strtolower($plex_data->Account->title)) {
+            $frontend = true;
+            die();
+        }
+
         // Check what kind of event the request is. We care only about Play, Resume, and Scrobble events.
         switch ($plex_data->event) {
             case 'media.play':
