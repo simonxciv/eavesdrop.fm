@@ -86,7 +86,7 @@
                 'listen_type' => $listen_type,
                 'payload' => array(array(
                     'track_metadata' => array(
-                        'artist_name' => ($plex_data->Metadata->originalTitle ? $plex_data->Metadata->originalTitle : $plex_data->Metadata->grandparentTitle),
+                        'artist_name' => (isset($plex_data->Metadata->originalTitle) ? $plex_data->Metadata->originalTitle : $plex_data->Metadata->grandparentTitle),
                         'track_name' => $plex_data->Metadata->title,
                         'release_name' => $plex_data->Metadata->parentTitle
                     )
@@ -101,7 +101,7 @@
                 'payload' => array(array(
                     'listened_at' => $timeStamp,
                     'track_metadata' => array(
-                        'artist_name' => ($plex_data->Metadata->originalTitle ? $plex_data->Metadata->originalTitle : $plex_data->Metadata->grandparentTitle),
+                        'artist_name' => (isset($plex_data->Metadata->originalTitle) ? $plex_data->Metadata->originalTitle : $plex_data->Metadata->grandparentTitle),
                         'track_name' => $plex_data->Metadata->title,
                         'release_name' => $plex_data->Metadata->parentTitle
                     )
