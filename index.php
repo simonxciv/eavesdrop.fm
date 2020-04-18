@@ -111,6 +111,8 @@
         // Send the request
         $response = curl_exec($ch);
         return $response;
+    } else {
+        $frontend = true;
     }
 ?>
 <?php if($frontend): ?>
