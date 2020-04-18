@@ -1,13 +1,12 @@
 <?php
-
-    function validateID($id, $url) {
+    function validateID($id) {
         // Initialise curl
         $ch = curl_init();
 
         // Set curl options, including the ListenBrainz token
         curl_setopt_array($ch, array(
             CURLOPT_RETURNTRANSFER => TRUE,
-            CURLOPT_URL => $url . '/1/validate-token?token=' . $id
+            CURLOPT_URL => 'https://api.listenbrainz.org/1/validate-token?token=' . $id
         ));
 
         // Send the curl request to check the token validity
@@ -31,22 +30,17 @@
 
     // Timestamp to use in our API submission
     $timeStamp = time();
-    
-    // ListenBrainz API root URL
-    $lb_api_root_url = 'https://api.listenbrainz.org';
 
     // Hide the front-end by default
     $frontend = false;
 
     // If the request isn't a POST request, do nothing
-    if($_SERVER['REQUEST_METHOD'] !== 'POST') {
-        $frontend = true;
-    } else {
-        // Implode the request to a string, decode the json
+    if($_SERVER['REQUEST_METHOD'] === 'POST') {
+        // Decode the request's json
         $plex_data = json_decode($_REQUEST["payload"]);
 
-        // Ignore the request if the ListenBrainz ID isn't valid
-        if(!isset($_REQUEST["id"]) || validateID($_REQUEST["id"], $lb_api_root_url) != true) {
+        // Ignore the request if the ListenBrainz ID isn't valid or isn't provided
+        if(!isset($_REQUEST["id"]) || validateID($_REQUEST["id"]) != true) {
             $frontend = true;
             die();
         } else {
@@ -80,37 +74,28 @@
                 die();
         }
 
-        // Construct the JSON for 'playing_now' events
-        if($listen_type === 'playing_now') {
-            $lb_data = array(
-                'listen_type' => $listen_type,
-                'payload' => array(array(
-                    'track_metadata' => array(
-                        'artist_name' => (isset($plex_data->Metadata->originalTitle) ? $plex_data->Metadata->originalTitle : $plex_data->Metadata->grandparentTitle),
-                        'track_name' => $plex_data->Metadata->title,
-                        'release_name' => $plex_data->Metadata->parentTitle
+        // Construct the payload
+        $lb_data = array(
+            'listen_type' => $listen_type,
+            'payload' => array(array(
+                'track_metadata' => array(
+                    'artist_name' => (isset($plex_data->Metadata->originalTitle) ? $plex_data->Metadata->originalTitle : $plex_data->Metadata->grandparentTitle),
+                    'track_name' => $plex_data->Metadata->title,
+                    'release_name' => $plex_data->Metadata->parentTitle,
+                    'additional_info' => array(
+                        'listening_from' => 'Plex'
                     )
-                ))
-            );
-        }
+                )
+            ))
+        );
 
-        // If not a 'playing_now' event, construct the JSON for a 'listen' event
-        else {
-            $lb_data = array(
-                'listen_type' => $listen_type,
-                'payload' => array(array(
-                    'listened_at' => $timeStamp,
-                    'track_metadata' => array(
-                        'artist_name' => (isset($plex_data->Metadata->originalTitle) ? $plex_data->Metadata->originalTitle : $plex_data->Metadata->grandparentTitle),
-                        'track_name' => $plex_data->Metadata->title,
-                        'release_name' => $plex_data->Metadata->parentTitle
-                    )
-                ))
-            );
+        // If the listen type is 'single' (a scrobble), attach a play time to the payload
+        if($listen_type === 'single') {
+            $lb_data['payload'][0]['listened_at'] = $timeStamp;
         }
 
         // Initialise curl
-        $ch = curl_init($lb_api_root_url . '/1/submit-listens');
+        $ch = curl_init('https://api.listenbrainz.org/1/submit-listens');
 
         // Set curl options, including the ListenBrainz token
         curl_setopt_array($ch, array(
@@ -167,7 +152,7 @@
             <h2>Get started</h2>
             <ol>
                 <li>Ensure you meet the requirements above.</li>
-                <li>From your <a href="https://listenbrainz.org/profile/">ListenBrainz profile page</a>, copy your <strong>User token</strong>, shown (redacted) below: <br><img src="img/token.png"></li>
+                <li>From your <a href="https://listenbrainz.org/profile/#auth-token">ListenBrainz profile page</a>, copy your <strong>User token</strong>, shown (redacted) below: <br><img src="img/token.png"></li>
                 <li>Paste your ListenBrainz ID in the field below (don't worry, we won't store it):<br>
                     <input id="lbid" type="text" placeholder="e.g. 152be636-bc70-4c86-9d0d-ba5bfb79fb65">
                 </li>
