@@ -1,5 +1,5 @@
 :root {
-    --accent-dark: #CC7B19;
+    --accent-dark: #7239b3;
 
     --base-dark: #1F2326;
     --alt-light: #FAFAFA;
@@ -15,6 +15,14 @@ body {
     color: var(--foreground-primary);
     font-size: 18px;
     line-height: 1.8;
+}
+::-moz-selection {
+    background-color: var(--accent-dark);
+    color: var(--alt-light);
+}
+::selection {
+    background-color: var(--accent-dark);
+    color: var(--alt-light);
 }
 main,
 header,
