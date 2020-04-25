@@ -159,7 +159,7 @@
                     <input id="lbid" type="text" placeholder="e.g. 152be636-bc70-4c86-9d0d-ba5bfb79fb65">
                 </li>
                 <li>Enter your Plex username below to ensure shared user listens aren't submitted on your behalf:<br>
-                    <input id="username" type="text" placeholder="e.g. elan">
+                    <input id="username" type="text" placeholder="e.g. simon">
                 </li>
                 <li>Copy this URL: <span id="lboutput" class="url"></span></li>
                 <li>And finally, paste the copied URL into a new <a href="https://app.plex.tv/desktop#!/settings/webhooks">webhook here</a> using the "Add Webhook" button.</p>
@@ -176,7 +176,7 @@
                 <i class="fad fa-hammer"></i> Built by <a href="https://smnbkly.co">Simon Buckley</a>
             </div>
             <div class="github">
-                <a title="Eavesdrop.FM on Github" href="https://github.com/simonxciv/listenbrainz-plex"><i class="fab fa-github"></i></a>
+                <a title="Eavesdrop.FM on Github" href="https://github.com/simonxciv/eavesdrop.fm"><i class="fab fa-github"></i></a>
             </div>
         </footer>
         <script>
