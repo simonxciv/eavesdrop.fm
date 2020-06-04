@@ -49,6 +49,9 @@ h2 {
     margin-bottom: 0;
     margin-top: 50px;
 }
+h4 {
+    margin-bottom: 0;
+}
 a {
     color: var(--accent-dark);
 }
@@ -79,6 +82,23 @@ input {
     width: 60%;
     font-size: 18px;
 }
+.btn {
+    background: var(--foreground-primary);
+    color: var(--background-primary);
+    border: 0;
+    padding: 10px 24px 8px 24px;
+    outline: 0;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.btn:hover,
+.btn:active,
+.btn:focus {
+    filter: brightness(1.8)
+}
+.fa-clone {
+    margin-right: 6px;
+}
 .url {
     font-weight: bold;
 }
@@ -104,6 +124,19 @@ footer .github a:active {
 }
 .fa-heart {
     color: red;
+}
+.hidden {
+    display: none;
+}
+#clipboardsuccess {
+    color: var(--accent-dark);
+    padding-left: 15px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 200ms ease-out;
+}
+#clipboardsuccess.shown {
+    opacity: 1;
 }
 @media screen and (max-width: 500px) {
     header,

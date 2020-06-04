@@ -138,6 +138,8 @@
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
         <link rel="manifest" href="/site.webmanifest">
 
+        <script src="https://unpkg.com/clipboard@2/dist/clipboard.min.js"></script>
+
     </head>
     <body>
         <header>
@@ -145,31 +147,54 @@
             <p>ListenBrainz + Plex = <i class="fas fa-heart"></i></p>
         </header>
         <main>
-            <p><em>Eavesdrop.FM</em> connects your <a href="https://plex.tv">Plex</a> music library to <a href="https://listenbrainz.org">the ListenBrainz project</a> for you; automagically taking Plex Webhooks and transmogrifying them into ListenBrainz... listens? It's like scrobbling, but without using someone else's trademark!</p>
-
-            <h2>Requirements</h2>
-            <p>To use this service, you'll need a Plex Media Server with a <a href="https://www.plex.tv/en-au/your-media/music/">Music library</a> set up. Additionally, as webhooks are a premium Plex feature, you'll need a <a href="https://www.plex.tv/en-au/plex-pass/">Plex Pass</a>.</p>
-            <p>To use ListenBrainz, a free <a href="https://musicbrainz.org/register?uri=%2F">MusicBrainz account</a> is required.</p>
+            <p>Submit your <a href="https://plex.tv">Plex</a> music listening activity to <a href="https://listenbrainz.org">the ListenBrainz project</a>. It's like scrobbling, but without using someone else's trademark!</p>
 
             <h2>Get started</h2>
             <ol>
-                <li>Ensure you meet the requirements above.</li>
-                <li>From your <a href="https://listenbrainz.org/profile/#auth-token">ListenBrainz profile page</a>, copy your <strong>User token</strong>, shown (redacted) below: <br><img src="img/token.png"></li>
-                <li>Paste your ListenBrainz ID in the field below (don't worry, we won't store it):<br>
+                <li>Make sure you have a Plex Media Server with a <a href="https://www.plex.tv/en-au/your-media/music/">Music library</a>, an active Plex Pass, and a free <a href="https://musicbrainz.org/register?uri=%2F">MusicBrainz account</a>
+                <li>Paste your ListenBrainz User Token in the field below (don't worry, we won't store it):<br>
                     <input id="lbid" type="text" placeholder="e.g. 152be636-bc70-4c86-9d0d-ba5bfb79fb65">
                 </li>
-                <li>Enter your Plex username below to ensure shared user listens aren't submitted on your behalf:<br>
+                <li id="usernamewrapper" class="hidden">Enter your Plex username below to ensure shared users don't submit on your behalf:<br>
                     <input id="username" type="text" placeholder="e.g. simon">
                 </li>
-                <li>Copy this URL: <span id="lboutput" class="url"></span></li>
-                <li>And finally, paste the copied URL into a new <a href="https://app.plex.tv/desktop#!/settings/webhooks">webhook here</a> using the "Add Webhook" button.</p>
+                <li id="copybutton" class="hidden">
+                    <button id="copier" class="btn" data-clipboard-text="">
+                        <i class="fas fa-clone"></i> Copy to clipboard
+                    </button><span id="clipboardsuccess"><i class="fad fa-check-circle"></i> copied!</span>
+                </li>
+                <li id="fifth" class="hidden">
+                    And finally, paste your unique URL into a new <a href="https://app.plex.tv/desktop#!/settings/webhooks">webhook here</a> using the "Add Webhook" button.
+                </li>
             </ol>
-            
-            <h2>About this project</h2>
-            <p>I created this project for myself primarily, but it worked well, so I figured I'd make it public! The project is in no way affiliated with or endorsed by Plex or MetaBrainz. If you find it useful, feel free to star it on <a href="https://github.com/simonxciv/listenbrainz-plex">Github</a>. Likewise, if you find any issues, please let me know!</p>
 
-            <h2>Known limitations</h2>
-            <p>Due to the way Plex webhooks work, listens that occurred historically can not be submitted. For example if your device was not connected to the internet at the time you listened to a track, the track will not be processed.</p>
+            <h2>About this project</h2>
+            <p>I started this project because I believe in the MetaBrainz vision, and ListenBrainz is an important part of that. As a heavy Plex music user, I wanted an easy way to submit my listening data to Listenbrainz. The project worked well for me, so I opened it up to the public! If you like what I've done, star the project on <a href="https://github.com/simonxciv/listenbrainz-plex">Github</a>. If you hate it, go complain on Reddit.</p>
+
+            <h2>FAQ</h2>
+
+            <h4>Why do I need a Plex Pass?</h4>
+            <p>Eavesdrop.FM leverages Plex <a href="https://www.plex.tv/plex-labs/#section7">webhooks</a> to submit listens. Webhooks are a premium Plex feature, available to Plex Pass holders.</p>
+
+            <h4>How do I find my ListenBrainz token?</h4>
+            <p>Your ListenBrainz token is available from your ListenBrainz <a href="https://listenbrainz.org/profile/">user profile</a> page, under the User Token heading.</p>
+
+            <h4>Why aren't offline listens submitted?</h4>
+            <p>Due to the way Plex webhooks work, listens that occurr historically can not be submitted. If your device is not able to connect to your Plex Server at the time that you listen to a track, it won't be submitted.</p>
+
+            <h4>My listens aren't being submitted! Halp!</h4>
+            <p>Check the following:</p>
+            <ul>
+                <li>Both the Plex username and ListenBrainz token you entered above are correct.</li>
+                <li>The webhook is saved in your <a href="https://app.plex.tv/desktop#!/settings/webhooks">account settings.</a></li>
+                <li>In your Plex Server's network settings (under Settings > Network), ensure the server is permitted to send webhooks.</li>
+                <li>Your Plex server is able to reach the internet.</li>
+            </ul>
+            <p>If you've checked all of the above and still can't submit your listens, raise a Github issue <a title="Eavesdrop.FM on Github" href="https://github.com/simonxciv/eavesdrop.fm">here</a> with as much information as possible.</p>
+
+            <h4>What about my privacy?</h4>
+            <p>We <strong>do not</strong> store any of your personal information. Your listening history, Plex username, and ListenBrainz token are encrypted in transit, and not retained by us.</p>
+
         </main>
         <footer>
             <div>
@@ -180,22 +205,44 @@
             </div>
         </footer>
         <script>
-            var lbid = document.getElementById("lbid"),
-                username = document.getElementById("username"),
-                output = document.getElementById("lboutput");
+            var clipboard = new ClipboardJS('.btn');
+            var lbidEl = document.getElementById("lbid"),
+                usernameEl = document.getElementById("username"),
+                lbid, username;
 
-            var url = 'https://eavesdrop.fm/?id=';
-
-            lbid.addEventListener("input", function() {
-                url = 'https://eavesdrop.fm/?id=' + encodeURIComponent(lbid.value);
-                output.innerHTML = DOMPurify.sanitize(url);
+            clipboard.on('success', function(e) {
+                document.getElementById('fifth').classList.remove('hidden');
+                document.getElementById('clipboardsuccess').classList.add('shown');
             });
-            username.addEventListener("input", function() {
-                if(lbid.value != '') {
-                    url = 'https://eavesdrop.fm/?id=' + encodeURIComponent(lbid.value) + '&user=' + encodeURIComponent(username.value)
-                    output.innerHTML = DOMPurify.sanitize(url);
+
+            lbidEl.addEventListener("input", function() {
+                lbid = lbidEl.value;
+                if(lbid.length > 0) {
+                    document.getElementById('usernamewrapper').classList.remove('hidden');
+                } else {
+                    document.getElementById('usernamewrapper').classList.add('hidden');
                 }
+                handleInput()
             });
+
+            usernameEl.addEventListener("input", function() {
+                username = usernameEl.value;
+                handleInput()
+            });
+
+            function handleInput() {
+                var url;
+                document.getElementById('clipboardsuccess').classList.remove('shown');
+                if(lbid.length > 0 && username.length > 0) {
+                    url = 'https://eavesdrop.fm/?id=' + encodeURIComponent(lbid) + '&user=' + encodeURIComponent(username);
+                    document.getElementById('copybutton').classList.remove('hidden');
+                } else {
+                    url = '';
+                    document.getElementById('copybutton').classList.add('hidden');
+                    document.getElementById('fifth').classList.add('hidden');
+                }
+                document.getElementById('copier').setAttribute("data-clipboard-text", url);
+            }
         </script>
         <script src="https://kit.fontawesome.com/9773f88366.js" crossorigin="anonymous"></script>
     </body>
