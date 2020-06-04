@@ -152,7 +152,7 @@
             <h2>Get started</h2>
             <ol>
                 <li>Make sure you have a Plex Media Server with a <a href="https://www.plex.tv/en-au/your-media/music/">Music library</a>, an active Plex Pass, and a free <a href="https://musicbrainz.org/register?uri=%2F">MusicBrainz account</a>
-                <li>Paste your ListenBrainz User Token in the field below (don't worry, we won't store it):<br>
+                <li>Enter your <a href="https://listenbrainz.org/profile/">ListenBrainz User Token</a> in the field below (don't worry, we won't store it):<br>
                     <input id="lbid" type="text" placeholder="e.g. 152be636-bc70-4c86-9d0d-ba5bfb79fb65">
                 </li>
                 <li id="usernamewrapper" class="hidden">Enter your Plex username below to ensure shared users don't submit on your behalf:<br>
