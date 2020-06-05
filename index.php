@@ -30,7 +30,6 @@
                     <section class="about grid">
                         <div>
                             <h2>About Eavesdrop.FM</h2>
-                            <!--<p>I started this project because I believe in the MetaBrainz vision, and ListenBrainz is an important part of that. As a heavy Plex music user, I wanted an easy way to submit my listening data to Listenbrainz. The project worked well for me, so I opened it up to the public! If you like what I've done, star the project on <a href="https://github.com/simonxciv/listenbrainz-plex">Github</a>. If you hate it, go complain on Reddit.</p>-->
                             <p>As a heavy user of Plex music, I built Eavesdrop.FM to simplify submitting listening data to ListenBrainz. Follow the guide below to get started. Check out the <a href="/faq.php">FAQ</a> if you have any questions.</p>
                         </div>
                         <img src="img/hero.svg" class="hero" alt="Stylised person listening to music">
