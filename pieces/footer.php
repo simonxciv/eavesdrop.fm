@@ -10,7 +10,7 @@
         </div>
     </div>
 </footer>
-<script src="https://unpkg.com/swup@latest/dist/swup.min.js"></script>  
+<script src="js/swup.min.js"></script>  
 <script src="js/clipboard.min.js"></script>
 <script src="js/main.js"></script>
 <script src="https://kit.fontawesome.com/9773f88366.js" crossorigin="anonymous"></script>
