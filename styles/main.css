@@ -128,6 +128,9 @@ footer .github a:active {
 .hidden {
     display: none;
 }
+#jsOnly {
+    display: none;
+}
 #clipboardsuccess {
     color: var(--accent-dark);
     padding-left: 15px;
