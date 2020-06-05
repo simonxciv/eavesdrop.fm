@@ -1,7 +1,7 @@
 <header>
     <div class="grid">
         <h1>
-            <a href="/index.php">Eavesdrop.FM</a>
+            <a href="/">Eavesdrop.FM</a>
         </h1>
         <p>ListenBrainz + Plex = <i class="fas fa-heart"></i><noscript>💕</noscript></p>
     </div>

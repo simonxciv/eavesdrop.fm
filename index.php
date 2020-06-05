@@ -30,7 +30,7 @@
                     <section class="about grid">
                         <div>
                             <h2>About Eavesdrop.FM</h2>
-                            <p>As a heavy user of Plex music, I built Eavesdrop.FM to simplify submitting listening data to ListenBrainz. Follow the guide below to get started. Check out the <a href="/faq.php">FAQ</a> if you have any questions.</p>
+                            <p>As a heavy user of Plex music, I built Eavesdrop.FM to simplify submitting listening data to ListenBrainz. Follow the guide below to get started. Check out the <a href="/faq">FAQ</a> if you have any questions.</p>
                         </div>
                         <img src="img/hero.svg" class="hero" alt="Stylised person listening to music">
                     </section>
