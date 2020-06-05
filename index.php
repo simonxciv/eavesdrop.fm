@@ -6,14 +6,14 @@
 <html>
     <head>
         <title>Eavesdrop.FM - Sync your Plex listens with ListenBrainz</title>
-        <link href="styles/main.css" rel="stylesheet">
-        <link href="styles/dark.css" rel="stylesheet" media="(prefers-color-scheme:dark)">
+        <link href="styles/main.css?v=2" rel="stylesheet">
+        <link href="styles/dark.css?v=2" rel="stylesheet" media="(prefers-color-scheme:dark)">
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.0.8/purify.min.js"></script>
 
         <meta name="description" content="Convert Plex track plays to ListenBrainz listens via webhooks and the ListenBrainz API. Like scrobbling, but not really.">
         <meta name="viewport" content="width=device-width,initial-scale=1">
-        
+
         <meta property="og:title" content="Sync your Plex listens with ListenBrainz">
         <meta property="og:description" content="Convert Plex track plays to ListenBrainz listens via webhooks and the ListenBrainz API. Like scrobbling, but not really.">
         <meta property="og:url" content="https://eavesdrop.fm">
