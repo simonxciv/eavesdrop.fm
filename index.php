@@ -36,7 +36,7 @@
                     </section>
                     <section class="get-started">
                         <h2>Get started</h2>
-                        <p>Make sure you have a Plex Media Server with a <a href="https://www.plex.tv/en-au/your-media/music/">Music library</a>, an active <a href="https://www.plex.tv/plex-pass/">Plex Pass</a>, and a free <a href="https://musicbrainz.org/register?uri=%2F">MusicBrainz account</a>.</p>
+                        <p>Make sure you have a Plex Media Server with a <a href="https://www.plex.tv/your-media/music/">Music library</a>, an active <a href="https://www.plex.tv/plex-pass/">Plex Pass</a>, and a free <a href="https://musicbrainz.org/register?uri=%2F">MusicBrainz account</a>.</p>
                         <div id="jsOnly">
                             <div>
                                 <h4>Step 1</h4>
