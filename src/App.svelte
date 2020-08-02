@@ -84,7 +84,7 @@
 				<ul>
 					<li>Both the Plex username and ListenBrainz token you entered above are correct.</li>
 					<li>The webhook is saved in your <a href="https://app.plex.tv/desktop#!/settings/webhooks">account settings.</a></li>
-					<li>In your Plex Server's network settings (under Settings > Network), ensure the server is permitted to send webhooks.</li>
+					<li>In your Plex Server's network settings (under Settings &gt; Network), ensure the server is permitted to send webhooks.</li>
 					<li>Your Plex server is able to reach the internet.</li>
 				</ul>
 				<p>If you've checked all of the above and still can't submit your listens, raise a Github issue <a title="Eavesdrop.FM on Github" href="https://github.com/simonxciv/eavesdrop.fm">here</a> with as much information as possible.</p>
