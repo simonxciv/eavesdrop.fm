@@ -12,9 +12,9 @@ html {
     box-sizing: inherit;
 }
 :root {
-    --accent-dark: #12947f;
-    --base-dark: #1F2326;
-    --alt-light: #FAFAFA;
+    --accent-dark: #e07a5f;
+    --base-dark: #3d405b;
+    --alt-light: #f4f1de;
     --foreground-primary: var(--base-dark);
     --background-primary: var(--alt-light);
 }
@@ -26,17 +26,7 @@ body {
     font-size: 18px;
     line-height: 1.8;
 }
-main,
-header,
-footer {
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
-    padding-left: 20px;
-    padding-right: 20px;
-}
-#swup {
-    min-height: 100vh;
+.container {
     display: flex;
     flex-direction: column;
 }
@@ -56,12 +46,13 @@ footer {
     align-items: center;
     grid-gap: 20px;
 }
-.transition-fade {
-    transition: 0.4s;
-    opacity: 1;
-}
-html.is-animating .transition-fade {
-    opacity: 0;
+.justified {
+    width: 100%;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 /* ------------------------------------------------
@@ -145,6 +136,18 @@ header .fa-heart {
 /* ------------------------------------------------
    SETUP GUIDE
 ------------------------------------------------ */
+.get-started {
+    background: var(--accent-dark);
+    padding-top: 20px;
+    padding-bottom: 30px;
+    margin-top: 30px;
+}
+.get-started a {
+    color: #f2cc8f
+}
+.get-started h2 {
+    margin-top: 0;
+}
 .get-started h4 {
     margin-bottom: 0;
 }
@@ -177,15 +180,14 @@ input {
 #jsOnly {
     display: none;
 }
-#clipboardsuccess {
-    color: var(--accent-dark);
-    padding-left: 15px;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 200ms ease-out;
-}
-#clipboardsuccess.shown {
-    opacity: 1;
+.clipboardsuccess {
+    display: inline-block;
+    background: #81b29a;
+    color: white;
+    padding: 0 15px;
+    bottom: -1px;
+    position: relative;
+    margin-left: 15px;
 }
 
 /* ------------------------------------------------
