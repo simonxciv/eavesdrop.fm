@@ -14,8 +14,8 @@
 	$: url = 'https://eavesdrop.fm/?id=' + token + '&user=' + user;
 </script>
 
-<div id="swup" class="transition-fade">
-	<div id="home" class="content">
+<div class="container">
+	<div class="content">
 		<header class="justified">
 			<div class="grid">
 				<h1>
@@ -53,7 +53,7 @@
 						{#if token && user}
 							<div transition:fade>
 								<h4>Step 3</h4>
-								<button on:click={() => copied = true} id="copier" class="btn" data-clipboard-text={url}>
+								<button on:click={() => copied = true} class="btn" data-clipboard-text={url}>
 									<i class="fas fa-clone"></i> Copy to clipboard
 								</button>{#if success === true}<span transition:fade class="clipboardsuccess"><i class="fad fa-check-circle icon"></i> copied!</span>{/if}
 							</div>
