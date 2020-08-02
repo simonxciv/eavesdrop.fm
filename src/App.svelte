@@ -77,7 +77,7 @@
 				<p>Your ListenBrainz token is available from your ListenBrainz <a href="https://listenbrainz.org/profile/">user profile</a> page, under the User Token heading.</p>
 
 				<h4>Why aren't offline listens submitted?</h4>
-				<p>Due to the way Plex webhooks work, listens that occurr historically can not be submitted. If your device is not able to connect to your Plex Server at the time that you listen to a track, it won't be submitted.</p>
+				<p>Due to the way Plex webhooks work, listens that occur historically can not be submitted. If your device is not able to connect to your Plex Server at the time that you listen to a track, it won't be submitted.</p>
 
 				<h4>My listens aren't being submitted! Halp!</h4>
 				<p>Check the following:</p>
@@ -90,7 +90,7 @@
 				<p>If you've checked all of the above and still can't submit your listens, raise a Github issue <a title="Eavesdrop.FM on Github" href="https://github.com/simonxciv/eavesdrop.fm">here</a> with as much information as possible.</p>
 
 				<h4>What about my privacy?</h4>
-				<p>We <strong>do not</strong> store any of your personal information. Your listening history, Plex username, and ListenBrainz token are encrypted in transit, and not retained by us.</p>
+				<p>Your information <strong>is not</strong> stored by ListenBrainz. Your listening history, Plex username, and ListenBrainz token are encrypted in transit, and not retained by us.</p>
 			</section>
 		</main>
 	</div>
