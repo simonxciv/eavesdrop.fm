@@ -108,7 +108,7 @@ function generateObject(body) {
           "additional_info": {
             "listening_from": "Plex",
           },
-          "artist_name": body.Metadata.grandparentTitle,
+          "artist_name": body.Metadata.originalTitle ? body.Metadata.originalTitle : body.Metadata.grandparentTitle,
           "track_name": body.Metadata.title,
           "release_name": body.Metadata.parentTitle
         }
