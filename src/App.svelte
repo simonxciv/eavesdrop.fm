@@ -90,7 +90,7 @@
 				<p>If you've checked all of the above and still can't submit your listens, raise a Github issue <a title="Eavesdrop.FM on Github" href="https://github.com/simonxciv/eavesdrop.fm">here</a> with as much information as possible.</p>
 
 				<h4>What about my privacy?</h4>
-				<p>Your information <strong>is not</strong> stored by ListenBrainz. Your listening history, Plex username, and ListenBrainz token are encrypted in transit, and not retained by us.</p>
+				<p>Your information <strong>is not</strong> stored by Eavesdrop.FM. Your listening history, Plex username, and ListenBrainz token are encrypted in transit, and not retained by us.</p>
 			</section>
 		</main>
 	</div>
