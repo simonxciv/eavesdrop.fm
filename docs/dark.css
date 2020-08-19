@@ -1,0 +1,15 @@
+:root {
+    --foreground-primary: var(--alt-light);
+    --background-primary: var(--base-dark);
+}
+.btn:hover,
+.btn:active,
+.btn:focus {
+    filter: brightness(0.6)
+}
+body {
+    background: #242742;
+}
+.get-started {
+    background: rgba(0,0,0,0.15);
+}
