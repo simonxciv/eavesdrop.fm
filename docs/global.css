@@ -242,3 +242,15 @@ footer .github a:active {
         margin-bottom: 10px;
     }
 }
+
+/* ------------------------------------------------
+   ALERT
+------------------------------------------------ */
+.alert {
+    background-color: #bd2b15;
+    color: white;
+    padding: 10px 0;
+}
+.alert p {
+    margin: 0;
+}
