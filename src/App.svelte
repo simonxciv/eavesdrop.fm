@@ -17,7 +17,7 @@
 <div class="alert container">
 	<div class="content">
 		<div class="justified">
-			<p><i class="fas fa-engine-warning"></i> Important: to protect your ListenBrainz token, we're making a change to the URL structure of eavesdrop.fm. If you created your webhook on or before 2020-09-26, you'll need to replace your webhook by 2020-10-26 to continue using Eavesdrop.FM. <a href="https://github.com/simonxciv/eavesdrop.fm/issues/5">See here</a> for further details.</p>
+			<p><i class="fas fa-engine-warning"></i> Important: to protect your ListenBrainz token, we're making a change to the URL structure of Eavesdrop.FM. If you created your webhook on or before 2020-09-26, you'll need to replace your webhook by 2020-10-26 to continue using Eavesdrop.FM. <a href="https://github.com/simonxciv/eavesdrop.fm/issues/5">See here</a> for further details.</p>
 		</div>
 	</div>
 </div>
