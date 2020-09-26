@@ -63,7 +63,9 @@ async function getParams(request) {
   const queryString = url.search.slice(1).split('&')
   queryString.forEach(item => {
     const [key, value] = item.split('=')
-    if(key === 'id') {
+    if(key === 'token') {
+      params['id'] = value
+    } else if(key === 'id') {
       params['id'] = value
     } else if(key === 'user') {
       params['user'] = value
