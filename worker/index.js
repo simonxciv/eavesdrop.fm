@@ -15,7 +15,7 @@ async function handleRequest(request) {
   // store the request body
   let body = await request.formData()
   body = await JSON.parse(body.get('payload'));
-  console.log(body)
+  
   // store an object of parameters
   const params = await getParams(request)
   // an array of events we actually care about. we'll ignore everything else
@@ -63,9 +63,7 @@ async function getParams(request) {
   const queryString = url.search.slice(1).split('&')
   queryString.forEach(item => {
     const [key, value] = item.split('=')
-    if(key === 'token') {
-      params['id'] = value
-    } else if(key === 'id') {
+    if(key === 'token' || key === 'id') {
       params['id'] = value
     } else if(key === 'user') {
       params['user'] = value
