@@ -254,3 +254,6 @@ footer .github a:active {
 .alert p {
     margin: 0;
 }
+.alert a {
+    color: white;
+}
