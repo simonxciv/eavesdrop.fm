@@ -22,8 +22,8 @@ async function handleRequest(request) {
   const acceptedEvents = ['media.scrobble', 'media.play','media.resume', 'media.listen']
 
   // Ignore the request if it's not a track, and the event is not in our list of accepted events
-  if (body.Metadata.type !== 'track' && !acceptedEvents.includes(body.event)) {
-    return new Response({ status: 204 })
+  if (body.Metadata.type !== 'track' || !acceptedEvents.includes(body.event)) {
+    return new Response(null, { status: 204 })
   }
 
   // If the username from Plex doesn't match the username in the query string
@@ -81,16 +81,16 @@ async function validateUser(listenBrainzToken) {
   return await fetch('https://api.listenbrainz.org/1/validate-token?token=' + listenBrainzToken)
   .then(response => {
     if(!response.ok) {
-      throw new Error('Something went wrong when we tried looking up the ListenBrainz token')
+      throw 'Something went wrong when we tried looking up the ListenBrainz token'
     }
     return response.json()
   }).then(responseJson => {
     if(responseJson.message !== 'Token valid.') {
-      throw new Error('invalidToken')
+      throw 'invalidToken'
     }
     return responseJson
   }).catch(error => {
-    throw new Error(error)
+    throw error
   })
 }
 
@@ -137,8 +137,10 @@ async function submitListen(payload,listenBrainzToken) {
     body: payload
   }).then(response => {
     if(!response.ok) {
-      throw new Error('Submission was unsuccessful')
+      throw 'Submission was unsuccessful'
     }
     return response.json()
+  }).catch(error => {
+    throw error
   })
 }
