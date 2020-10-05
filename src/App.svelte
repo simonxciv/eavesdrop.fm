@@ -11,7 +11,7 @@
 		success = true
 	});
 
-	$: url = 'https://eavesdrop.fm/?token=' + token + '&user=' + user;
+	$: url = encodeURI('https://eavesdrop.fm/?token=' + token + '&user=' + user);
 </script>
 
 <div class="alert container">

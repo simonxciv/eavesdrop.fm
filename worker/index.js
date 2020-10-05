@@ -31,7 +31,7 @@ async function handleRequest(request) {
   }
 
   // If the username from Plex doesn't match the username in the query string
-  if (body.Account.title.toLowerCase() !== params.user.toLowerCase()) {
+  if (body.Account.title.toLowerCase() !== decodeURI(params.user.toLowerCase())) {
     return new Response('Plex user does not match query string', { status: 200 })
   }
 
