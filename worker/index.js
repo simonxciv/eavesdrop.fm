@@ -21,25 +21,26 @@ async function handleRequest(request) {
   // an array of events we actually care about. we'll ignore everything else
   const acceptedEvents = ['media.scrobble', 'media.play','media.resume', 'media.listen']
 
-  if(body.Metadata.type !== 'track') {
-    return new Response('Not a track!', { status: 200})
-  }
-
-  // Ignore the request if it's not in our list of accepted events
-  if (!acceptedEvents.includes(body.event)) {
-    return new Response('Nothing to do', { status: 200 })
+  // Ignore the request if it's not a track, and the event is not in our list of accepted events
+  if (body.Metadata.type !== 'track' && !acceptedEvents.includes(body.event)) {
+    return new Response({ status: 204 })
   }
 
   // If the username from Plex doesn't match the username in the query string
   if (body.Account.title.toLowerCase() !== decodeURI(params.user.toLowerCase())) {
-    return new Response('Plex user does not match query string', { status: 200 })
+    return new Response('Plex user does not match query string', { status: 401 })
   }
 
   // Send the user's ListenBrainz token to LB for validation, and reject the request if it's invalid
   try {
     await validateUser(params.id)
   } catch (error) {
-    return new Response(error, { status: 500 })
+    if(error === 'invalidToken') {
+      return new Response('Invalid ListenBrainz token', { status: 403 })
+    }
+    else {
+      return new Response(error, { status: 500 })
+    }
   }
 
   // Submit the event to ListenBrainz
@@ -80,16 +81,16 @@ async function validateUser(listenBrainzToken) {
   return await fetch('https://api.listenbrainz.org/1/validate-token?token=' + listenBrainzToken)
   .then(response => {
     if(!response.ok) {
-      throw Error('Something went wrong when we tried looking up the ListenBrainz token')
+      throw new Error('Something went wrong when we tried looking up the ListenBrainz token')
     }
     return response.json()
   }).then(responseJson => {
     if(responseJson.message !== 'Token valid.') {
-      throw Error('ListenBrainz token is not valid')
+      throw new Error('invalidToken')
     }
     return responseJson
   }).catch(error => {
-    throw error
+    throw new Error(error)
   })
 }
 
@@ -136,7 +137,7 @@ async function submitListen(payload,listenBrainzToken) {
     body: payload
   }).then(response => {
     if(!response.ok) {
-      throw Error('Submission was unsuccessful')
+      throw new Error('Submission was unsuccessful')
     }
     return response.json()
   })
