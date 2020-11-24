@@ -2,16 +2,17 @@
 	import { fade } from 'svelte/transition';
 	import Clipboard from 'clipboard';
 
-	let token, user, url;
+	let token, user, url, ignore;
 	let copied = false;
 	let success = false;
 
 	let clipboard = new Clipboard('.btn');
+
 	clipboard.on('success', e => {
 		success = true
 	});
 
-	$: url = encodeURI('https://eavesdrop.fm/?token=' + token + '&user=' + user);
+	$: url = encodeURI('https://eavesdrop.fm/?token=' + token + '&user=' + user + (ignore ? '&ignore=' + ignore : ''));
 </script>
 
 <div class="container">
@@ -52,7 +53,12 @@
 						{/if}
 						{#if token && user}
 							<div transition:fade>
-								<h4>Step 3</h4>
+								<h4>Step 3 (optional)</h4>
+								Enter a comma separated list of Plex library names to ignore:<br>
+								<input bind:value={ignore} type="text" placeholder="e.g. Audiobooks">
+							</div>
+							<div transition:fade>
+								<h4>Step 4</h4>
 								<button on:click={() => copied = true} class="btn" data-clipboard-text={url}>
 									<i class="fas fa-clone"></i> Copy to clipboard
 								</button>{#if success === true}<span transition:fade class="clipboardsuccess"><i class="fad fa-check-circle icon"></i> copied!</span>{/if}
@@ -60,7 +66,7 @@
 						{/if}
 						{#if token && user && copied}
 							<div transition:fade>
-								<h4>Step 4</h4>
+								<h4>Step 5</h4>
 								And finally, paste your unique URL into a new <a href="https://app.plex.tv/desktop#!/settings/webhooks">webhook here</a> using the "Add Webhook" button.
 							</div>
 						{/if}
