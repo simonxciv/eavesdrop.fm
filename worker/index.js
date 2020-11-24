@@ -31,6 +31,11 @@ async function handleRequest(request) {
     return new Response('Plex user does not match query string', { status: 401 })
   }
 
+  // Ignore the request if it's from a media library that's included in the ignore list
+  if (body.Metadata.librarySectionTitle && params.ignore.includes(body.Metadata.librarySectionTitle)) {
+    return new Response({ status: 204 }) 
+  }
+
   // Send the user's ListenBrainz token to LB for validation, and reject the request if it's invalid
   try {
     await validateUser(params.id)
@@ -59,13 +64,19 @@ async function handleRequest(request) {
 * @param {Request} request
 */
 async function getParams(request) {
-  let params = {}
+  let params = {
+    id: '',
+    ignore: [],
+    user: ''
+  }
   const url = new URL(request.url)
   const queryString = url.search.slice(1).split('&')
   queryString.forEach(item => {
     const [key, value] = item.split('=')
     if(key === 'token' || key === 'id') {
       params['id'] = value
+    } if(key === 'ignore') {
+      params['ignore'] = decodeURIComponent(value).split(',')
     } else if(key === 'user') {
       params['user'] = value
     }
