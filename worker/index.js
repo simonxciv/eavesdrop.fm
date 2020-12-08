@@ -14,7 +14,7 @@ async function handleRequest(request) {
 
   // store the request body
   let body = await request.formData()
-  body = await JSON.parse(body.get('payload'));
+  body = await JSON.parse(body.get('payload'))
   
   // store an object of parameters
   const params = await getParams(request)
@@ -27,7 +27,7 @@ async function handleRequest(request) {
   }
 
   // If the username from Plex doesn't match the username in the query string
-  if (body.Account.title.toLowerCase() !== decodeURI(params.user.toLowerCase())) {
+  if (body.Account.title.toLowerCase() !== params.user.toLowerCase()) {
     return new Response('Plex user does not match query string', { status: 401 })
   }
 
@@ -69,14 +69,15 @@ async function getParams(request) {
     ignore: [],
     user: ''
   }
-  const url = new URL(request.url)
+  let url = new URL(request.url)
   const queryString = url.search.slice(1).split('&')
   queryString.forEach(item => {
+    item = decodeURIComponent(item.replace(/\+/g, ' '))
     const [key, value] = item.split('=')
     if(key === 'token' || key === 'id') {
       params['id'] = value
     } if(key === 'ignore') {
-      params['ignore'] = decodeURIComponent(value).split(',')
+      params['ignore'] = value.split(',')
     } else if(key === 'user') {
       params['user'] = value
     }
