@@ -22,7 +22,7 @@ async function handleRequest(request) {
   const acceptedEvents = ['media.scrobble', 'media.play','media.resume', 'media.listen']
 
   // Ignore the request if it's not a track, and the event is not in our list of accepted events
-  if (body.Metadata.type !== 'track' || !acceptedEvents.includes(body.event)) {
+  if (!body.Metadata || body.Metadata.type !== 'track' || !acceptedEvents.includes(body.event)) {
     return new Response(null, { status: 204 })
   }
 
