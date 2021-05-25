@@ -17,6 +17,6 @@
   },
   "dependencies": {
     "clipboard": "^2.0.6",
-    "sirv-cli": "^1.0.11"
+    "sirv-cli": "^1.0.12"
   }
 }
