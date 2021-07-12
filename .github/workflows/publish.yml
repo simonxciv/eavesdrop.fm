@@ -12,6 +12,12 @@ jobs:
         with:
           persist-credentials: false
 
+      - name: Publish Worker 🤖
+        uses: cloudflare/wrangler-action@1.3.0
+        with:
+          workingDirectory: 'worker'
+          apiToken: ${{ secrets.CF_API_TOKEN }}
+
       - name: Install and Build 🔧
         run: |
           npm install
