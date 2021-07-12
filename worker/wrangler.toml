@@ -2,7 +2,7 @@ name = "worker"
 type = "javascript"
 account_id = "78e17d0202abecd663c1632741d19b85"
 workers_dev = true
-route = ["eavesdrop.fm/*"]
+route = "eavesdrop.fm/*"
 zone_id = "dcfbe1ea0cbf72bc399d3f184557177a"
 kv_namespaces = [ 
 	 { binding = "EAVESDROP_FM", id = "a5572e07677749ca81580266d0ca03c3", preview_id = "a5572e07677749ca81580266d0ca03c3" }
