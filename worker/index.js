@@ -4,6 +4,8 @@ addEventListener('fetch', event => {
 
 // ListenBrainz API base url
 const LB_BASE_URL = 'https://api.listenbrainz.org/1'
+// how long to retain KV entries
+const KV_TTL = 604800
 // an array of events we actually care about. we'll ignore everything else
 const ACCEPTED_EVENTS = ['media.scrobble', 'media.play', 'media.resume', 'media.listen']
 // generate the body required by LB: https://listenbrainz.readthedocs.io/en/latest/dev/json/#submission-json
@@ -102,7 +104,7 @@ const handleRequest = async request => {
 
   if (user_approved === null) {
     const approvalState = await validateUser(params.id)
-    await EAVESDROP_FM.put(hash, approvalState, { expirationTtl: 604800 })
+    await EAVESDROP_FM.put(hash, approvalState, { expirationTtl: KV_TTL })
     if (!approvalState) {
       return new Response('Invalid ListenBrainz token', { status: 403 })
     }
