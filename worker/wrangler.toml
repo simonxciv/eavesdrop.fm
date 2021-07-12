@@ -1,4 +1,4 @@
-name = "worker"
+name = "eavesdrop-fm"
 type = "javascript"
 account_id = "78e17d0202abecd663c1632741d19b85"
 workers_dev = true
