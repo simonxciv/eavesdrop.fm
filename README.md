@@ -2,6 +2,8 @@
 
 # eavesdrop.fm
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/79338f19-0931-4659-8f93-65a53c138f67/deploy-status)](https://app.netlify.com/sites/eavesdropfm/deploys)
+
 > Submit your Plex music listening data to ListenBrainz
 
 ## What is it?
