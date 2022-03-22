@@ -16,7 +16,7 @@
     <iframe
       title="Plausible Analytics for eavesdrop.fm"
       plausible-embed
-      src="https://plausible.io/share/eavesdrop.fm?auth=d-1qGtC2HIWr96k7gkmnL&embed=true&theme=system&background=transparent"
+      src="https://plausible.io/share/eavesdrop.fm?auth=d-1qGtC2HIWr96k7gkmnL&goal=listen&embed=true&theme=system&background=transparent"
       scrolling="no"
       frameborder="0"
       loading="lazy"
