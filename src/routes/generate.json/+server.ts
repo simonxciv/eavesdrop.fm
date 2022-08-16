@@ -1,3 +1,5 @@
+
+// @migration task: Check imports
 import uri from '$lib/helpers/uri';
 import type State from '$lib/typing/state';
 import type { RequestHandler } from '@sveltejs/kit';
@@ -13,10 +15,10 @@ export const PUT: RequestHandler = async ({ request }) => {
 
   const url = uri(state);
 
-  return {
+  return new Response(undefined, {
     status: 303,
     headers: {
       Location: `/generate?url=${encodeURIComponent(url.href)}`
     }
-  };
+  });
 };

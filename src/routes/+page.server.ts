@@ -4,12 +4,12 @@ import statusCheck from '$lib/helpers/statusCheck';
 import userIsValid from '$lib/helpers/userIsValid';
 import type Params from '$lib/typing/params';
 import type Payload from '$lib/typing/payload';
-import type { RequestHandler } from '@sveltejs/kit';
+import type { Action } from '@sveltejs/kit';
 
 // ListenBrainz API base url.
 const LB_BASE_URL = 'https://api.listenbrainz.org/1';
 
-export const POST: RequestHandler = async ({ request }) => {
+export const POST: Action = async ({ request }) => {
   const body: Payload = await request
     .formData()
     .then((r) => JSON.parse(r.get('payload').toString()));
