@@ -9,7 +9,7 @@ import type { RequestHandler } from '@sveltejs/kit';
 // ListenBrainz API base url.
 const LB_BASE_URL = 'https://api.listenbrainz.org/1';
 
-export const post: RequestHandler = async ({ request }) => {
+export const POST: RequestHandler = async ({ request }) => {
   const body: Payload = await request
     .formData()
     .then((r) => JSON.parse(r.get('payload').toString()));

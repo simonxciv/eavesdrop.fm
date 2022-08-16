@@ -2,7 +2,7 @@ import uri from '$lib/helpers/uri';
 import type State from '$lib/typing/state';
 import type { RequestHandler } from '@sveltejs/kit';
 
-export const put: RequestHandler = async ({ request }) => {
+export const PUT: RequestHandler = async ({ request }) => {
   const body = await request.formData();
   const state: State = {
     token: body.get('token')?.toString(),
