@@ -1,15 +1,15 @@
 {
-  "files.exclude": {
-    "**/node_modules": true,
-    "**/build": true
-  },
+	"files.exclude": {
+		"**/node_modules": true,
+		"**/build": true
+	},
 
-  "editor.formatOnSave": true,
-  "editor.codeActionsOnSave": {
-    "source.fixAll": true
-  },
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
+	"editor.formatOnSave": true,
+	"editor.codeActionsOnSave": {
+		"source.fixAll": true
+	},
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
 
-  "typescript.preferences.quoteStyle": "single",
-  "javascript.suggestionActions.enabled": false
+	"typescript.preferences.quoteStyle": "single",
+	"javascript.suggestionActions.enabled": false
 }
