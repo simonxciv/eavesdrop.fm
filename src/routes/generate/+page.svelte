@@ -8,6 +8,7 @@
 
 <svelte:head>
 	<title>eavesdrop.fm | copy your unique webhook URL</title>
+	<meta name="robots" content="noindex" />
 </svelte:head>
 
 <Card>
