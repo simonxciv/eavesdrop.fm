@@ -1,4 +1,4 @@
-import adapter from '@sveltejs/adapter-auto';
+import adapter from '@sveltejs/adapter-netlify';
 import preprocess from 'svelte-preprocess';
 
 /** @type {import('@sveltejs/kit').Config} */
@@ -18,7 +18,9 @@ const config = {
 			allowed: ['PUT']
 		},
 
-		adapter: adapter()
+		adapter: adapter({
+			edge: true
+		})
 	}
 };
 
