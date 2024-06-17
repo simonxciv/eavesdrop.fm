@@ -22,6 +22,7 @@ interface MetadataPayload {
 	key: string;
 	parentRatingKey: string;
 	grandparentRatingKey: string;
+	guid: string;
 	Guid?: GuidPayload[];
 	parentGuid: string;
 	grandparentGuid: string;
