@@ -3,8 +3,7 @@ import type Payload from '$lib/typing/payload';
 // generate the body required by LB: https://listenbrainz.readthedocs.io/en/latest/dev/json/#submission-json
 const generateListenbrainzBody = (body: Payload) => {
 	let track_mbid = body.Metadata?.Guid?.find((v) => v.id?.startsWith("mbid://"))?.id?.substring(7);
-
-	let payload = {
+	return JSON.stringify({
 		listen_type: body.event === 'media.scrobble' ? 'single' : 'playing_now',
 		payload: [
 			{
@@ -20,10 +19,7 @@ const generateListenbrainzBody = (body: Payload) => {
 				}
 			}
 		]
-	}
-	console.log(JSON.stringify(payload));
-
-	return JSON.stringify(payload)
+	})
 };
 
 export default generateListenbrainzBody;
