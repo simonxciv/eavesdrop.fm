@@ -19,7 +19,7 @@ const generateListenbrainzBody = (body: Payload) => {
 				}
 			}
 		]
-	})
+	});
 };
 
 export default generateListenbrainzBody;
