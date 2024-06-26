@@ -15,7 +15,7 @@ const generateListenbrainzBody = (body: Payload) => {
 					},
 					artist_name: body.Metadata.originalTitle ?? body.Metadata.grandparentTitle,
 					track_name: body.Metadata.title,
-					release_name: body.Metadata.parentTitle,
+					release_name: body.Metadata.parentTitle
 				}
 			}
 		]
