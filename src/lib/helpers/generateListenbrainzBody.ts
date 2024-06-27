@@ -11,7 +11,7 @@ const generateListenbrainzBody = (body: Payload) => {
 				track_metadata: {
 					additional_info: {
 						listening_from: 'Plex',
-					  ...(track_mbid !== undefined && { track_mbid: track_mbid })
+					  track_mbid: track_mbid
 					},
 					artist_name: body.Metadata.originalTitle ?? body.Metadata.grandparentTitle,
 					track_name: body.Metadata.title,
