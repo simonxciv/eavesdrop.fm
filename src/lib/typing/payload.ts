@@ -13,6 +13,9 @@ interface PlayerPayload {
 	title: string;
 	uuid: string;
 }
+interface GuidPayload {
+	id: string;
+}
 interface MetadataPayload {
 	librarySectionType: string;
 	ratingKey: string;
@@ -20,6 +23,7 @@ interface MetadataPayload {
 	parentRatingKey: string;
 	grandparentRatingKey: string;
 	guid: string;
+	Guid?: GuidPayload[];
 	parentGuid: string;
 	grandparentGuid: string;
 	parentStudio: string;
